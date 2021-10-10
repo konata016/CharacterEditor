@@ -77,6 +77,12 @@ public class FaceItemScrollController : MonoBehaviour
     private void setupScrollRectContent(int count)
     {
         var y = (getItemPos(count).y / 2);
+
+        if (y % faceItemSiz != 0)
+        {
+            y -= faceItemSiz / 2;
+        }
+
         scrollRect.content.offsetMin = new Vector2(0, y);
     }
 
