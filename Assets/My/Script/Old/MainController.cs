@@ -55,7 +55,7 @@ public class MainController : MonoBehaviour
 
     private void setupMouseScrollController()
     {
-        mouseScrollController.Initialize("Mouse/", (sprite) => mouseImage.sprite = sprite);
+        mouseScrollController.Initialize("Mouth/", (sprite) => mouseImage.sprite = sprite);
     }
 
     private void setupEyeScrollController()
