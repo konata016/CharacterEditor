@@ -12,6 +12,8 @@ public class FaceItem : MonoBehaviour
     [SerializeField]
     private Button button;
 
+    private Action<Sprite> onClickButton;
+
     public void SetImage(Sprite sprite)
     {
         image.sprite = sprite;
@@ -25,7 +27,13 @@ public class FaceItem : MonoBehaviour
 
     public void SetupButton(Action<Sprite> onClickButton)
     {
+        this.onClickButton = onClickButton;
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(() => onClickButton?.Invoke(image.sprite));
+    }
+
+    public void SelfClickButton()
+    {
+        onClickButton?.Invoke(image.sprite);
     }
 }

@@ -118,6 +118,7 @@ public class ScreenShot : MonoBehaviour
         var bytes = screenShot.EncodeToPNG();
         Destroy(screenShot);
 
+//         File.WriteAllBytes(Folder + "/" + DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".png", bytes);
         FileDownLoad(bytes, bytes.Length, DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".png");
     }
 }
