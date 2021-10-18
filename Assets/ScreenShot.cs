@@ -21,6 +21,7 @@ public class ScreenShot : MonoBehaviour
     [SerializeField] private Button saveButton;
     
     public int depth = 0;
+    public bool Alpha = true;
 
 
     void Awake()
@@ -32,30 +33,20 @@ public class ScreenShot : MonoBehaviour
     }
     
     
-    // void Update()
-    // {
-    //     if (Input.GetKeyDown(KeyCode.X))
-    //     {
-    //         CaptureScreenShot();
-    //     }
-    // }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            // StartCoroutine(CaptureWithAlpha());
+        }
+    }
 
 //     IEnumerator CaptureWithAlpha()
 //     {
 //         Debug.Log($"x, y : {camera.pixelWidth} {camera.pixelHeight}");
 //         yield return new WaitForEndOfFrame();
-//
-//         var rtex = new RenderTexture(Screen.width, Screen.height, 0, RenderTextureFormat.ARGBFloat, RenderTextureReadWrite.Default);
-//         // var rtex = new RenderTexture(camera.rect.width, camera.rect.height, RenderTextureFormat.ARGBFloat, RenderTextureReadWrite.Default);
-//         // var rtex = new RenderTexture(camera.pixelWidth, camera.pixelHeight, 0);
-//         //var tex = ScreenCapture.CaptureScreenshotAsTexture();
-//         // var prev = camera.targetTexture; 
-//         // camera.targetTexture = rtex;
-//         // camera.Render();
-//         // camera.targetTexture = prev;
-//         // RenderTexture.active = rtex;
 //         
-//         ScreenCapture.CaptureScreenshotIntoRenderTexture(rtex);
+//         var rtex = new RenderTexture(camera.pixelWidth, camera.pixelHeight, 0);
 //
 //         var width = rtex.width;
 //         var height = rtex.height;
@@ -118,7 +109,6 @@ public class ScreenShot : MonoBehaviour
         var bytes = screenShot.EncodeToPNG();
         Destroy(screenShot);
 
-//         File.WriteAllBytes(Folder + "/" + DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".png", bytes);
         FileDownLoad(bytes, bytes.Length, DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".png");
     }
 }
