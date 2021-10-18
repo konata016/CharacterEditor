@@ -6,14 +6,23 @@ using UnityEngine.UI;
 
 public class MainController : MonoBehaviour
 {
+    // [SerializeField]
+    // private Image bodyImage;
+    //
+    // [SerializeField]
+    // private Image mouseImage;
+    //
+    // [SerializeField]
+    // private Image eyeImage;
+    
     [SerializeField]
-    private Image bodyImage;
+    private SpriteRenderer bodyImage;
 
     [SerializeField]
-    private Image mouseImage;
+    private SpriteRenderer mouseImage;
 
     [SerializeField]
-    private Image eyeImage;
+    private SpriteRenderer eyeImage;
 
     [SerializeField]
     private FaceItemScrollController bodyScrollController;
@@ -50,6 +59,7 @@ public class MainController : MonoBehaviour
 
     private void setupBodyScrollController()
     {
+        // bodyScrollController.Initialize("Body/", (sprite) => bodyImage.sprite = sprite);
         bodyScrollController.Initialize("Body/", (sprite) => bodyImage.sprite = sprite);
     }
 
