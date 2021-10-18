@@ -6,22 +6,25 @@ using UnityEngine;
 public class EditorController : MonoBehaviour
 {
     [SerializeField]
+    private ScreenShot screenShot;
+
+    [SerializeField]
     private UiController uiController;
 
     [SerializeField] 
-    private Sprite hairSprite;
+    private SpriteRenderer hairSprite;
     
     [SerializeField] 
-    private Sprite eyeSprite;
+    private SpriteRenderer eyeSprite;
     
     [SerializeField] 
-    private Sprite mouthSprite;
+    private SpriteRenderer mouthSprite;
     
     [SerializeField] 
-    private Sprite otherSprite;
+    private SpriteRenderer otherSprite;
     
     [SerializeField] 
-    private Sprite backgroundSprite;
+    private SpriteRenderer backgroundSprite;
 
     private void Start()
     {
@@ -41,31 +44,31 @@ public class EditorController : MonoBehaviour
 
     private void onChangeHairSprite(Sprite sprite)
     {
-        hairSprite = sprite;
+        hairSprite.sprite = sprite;
     }
     
     private void onChangeEyeSprite(Sprite sprite)
     {
-        eyeSprite = sprite;
+        eyeSprite.sprite = sprite;
     }
 
     private void onChangeMouthSprite(Sprite sprite)
     {
-        mouthSprite = sprite;
+        mouthSprite.sprite = sprite;
     }
     
     private void onChangeOtherSprite(Sprite sprite)
     {
-        otherSprite = sprite;
+        otherSprite.sprite = sprite;
     }
     
     private void onChangeBackgroundSprite(Sprite sprite)
     {
-        backgroundSprite = sprite;
+        backgroundSprite.sprite = sprite;
     }
 
     private void onClickSaveButton()
     {
-        
+        screenShot.CaptureScreenShot();
     }
 }
