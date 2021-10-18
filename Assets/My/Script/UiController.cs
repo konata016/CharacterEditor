@@ -33,14 +33,15 @@ public class UiController : MonoBehaviour
         Action<Sprite> onClickEyeUiButton,
         Action<Sprite> onClickMouthUiButton,
         Action<Sprite> onClickOtherUiButton,
-        Action<Sprite> onClickBackgroundUiButton)
+        Action<Sprite> onClickBackgroundUiButton,
+        Action onClickSaveButton)
     {
         setupHairUiController(onClickHairUiButton);
         setupEyeUiController(onClickEyeUiButton);
         setupMouthUiController(onClickMouthUiButton);
         setupOtherUiController(onClickOtherUiButton);
         setupBackgroundUiController(onClickBackgroundUiButton);
-        setupSaveButton();
+        setupSaveButton(onClickSaveButton);
         setupResetButton();
     }
 
@@ -69,13 +70,10 @@ public class UiController : MonoBehaviour
         backgroundUiController.Initialize("", onClickButton);
     }
 
-    private void setupSaveButton()
+    private void setupSaveButton(Action onClickSaveButton)
     {
         saveButton.onClick.RemoveAllListeners();
-        saveButton.onClick.AddListener(() =>
-        {
-            //todo: 保存処理の追加
-        });
+        saveButton.onClick.AddListener(() => onClickSaveButton());
     }
 
     private void setupResetButton()
