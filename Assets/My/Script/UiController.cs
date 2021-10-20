@@ -62,12 +62,12 @@ public class UiController : MonoBehaviour
 
     private void setupOtherUiController(Action<Sprite> onClickButton)
     {
-        otherUiController.Initialize("", onClickButton);
+        otherUiController.Initialize("Others/", onClickButton);
     }
 
     private void setupBackgroundUiController(Action<Sprite> onClickButton)
     {
-        backgroundUiController.Initialize("", onClickButton);
+        backgroundUiController.Initialize("Background/", onClickButton);
     }
 
     private void setupSaveButton(Action onClickSaveButton)
