@@ -21,7 +21,7 @@ public class EditorController : MonoBehaviour
     private SpriteRenderer mouthSprite;
     
     [SerializeField] 
-    private SpriteRenderer otherSprite;
+    private Transform otherLayerRoot;
     
     [SerializeField] 
     private SpriteRenderer backgroundSprite;
@@ -36,8 +36,8 @@ public class EditorController : MonoBehaviour
         uiController.Initialize(
             onChangeHairSprite, 
             onChangeEyeSprite,
-            onChangeMouthSprite, 
-            onChangeOtherSprite, 
+            onChangeMouthSprite,
+            otherLayerRoot, 
             onChangeBackgroundSprite,
             onClickSaveButton);
     }
@@ -55,11 +55,6 @@ public class EditorController : MonoBehaviour
     private void onChangeMouthSprite(Sprite sprite)
     {
         mouthSprite.sprite = sprite;
-    }
-    
-    private void onChangeOtherSprite(Sprite sprite)
-    {
-        otherSprite.sprite = sprite;
     }
     
     private void onChangeBackgroundSprite(Sprite sprite)

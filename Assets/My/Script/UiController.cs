@@ -16,7 +16,7 @@ public class UiController : MonoBehaviour
     private FaceItemsControllerBase mouthUiController;
 
     [SerializeField]
-    private FaceItemsControllerBase otherUiController;
+    private OtherFaceItemsController otherUiController;
 
     [SerializeField]
     private FaceItemsControllerBase backgroundUiController;
@@ -32,17 +32,18 @@ public class UiController : MonoBehaviour
         Action<Sprite> onClickHairUiButton,
         Action<Sprite> onClickEyeUiButton,
         Action<Sprite> onClickMouthUiButton,
-        Action<Sprite> onClickOtherUiButton,
+        Transform otherLayerRoot,
         Action<Sprite> onClickBackgroundUiButton,
         Action onClickSaveButton)
     {
         setupHairUiController(onClickHairUiButton);
         setupEyeUiController(onClickEyeUiButton);
         setupMouthUiController(onClickMouthUiButton);
-        setupOtherUiController(onClickOtherUiButton);
+        setupOtherUiController(otherLayerRoot);
         setupBackgroundUiController(onClickBackgroundUiButton);
         setupSaveButton(onClickSaveButton);
         setupResetButton();
+        resetUi();
     }
 
     private void setupHairUiController(Action<Sprite> onClickButton)
@@ -60,9 +61,9 @@ public class UiController : MonoBehaviour
         mouthUiController.Initialize("Mouth/", onClickButton);
     }
 
-    private void setupOtherUiController(Action<Sprite> onClickButton)
+    private void setupOtherUiController(Transform otherLayerRoot)
     {
-        otherUiController.Initialize("Others/", onClickButton);
+        otherUiController.Initialize("Others/", otherLayerRoot);
     }
 
     private void setupBackgroundUiController(Action<Sprite> onClickButton)
