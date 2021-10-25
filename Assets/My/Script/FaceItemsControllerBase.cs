@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class FaceItemsControllerBase : MonoBehaviour
 {
+    [SerializeField]
+    private ToggleGroup toggleGroup;
+
     private FaceItem defaultFaceItem;
 
     private FaceItem selectFaceItem;
@@ -27,16 +30,24 @@ public class FaceItemsControllerBase : MonoBehaviour
 
     public void ResetUi()
     {
-        defaultFaceItem.SelfClickButton();
+        toggleGroup.SetAllTogglesOff();
+        defaultFaceItem.ChangeToggle();
     }
 
     private void setupFaceItemButton(FaceItem faceItem, Action<Sprite> onClickFaceItemButton)
     {
-        faceItem.SetupButton((sprite) =>
+        faceItem.SetupToggle((isEnabled, sprite) =>
         {
+            // 無効状態で呼び出しをされた場合イベント実行しない
+            if (!isEnabled)
+            {
+                return;
+            }
+
             selectFaceItem = faceItem;
             onClickFaceItemButton?.Invoke(sprite);
-        });
+        },
+        toggleGroup);
     }
 
     private void setupFaceItemImage(FaceItem faceItem, string resourcePath, int resourceNum)

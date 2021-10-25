@@ -10,30 +10,25 @@ public class FaceItem : MonoBehaviour
     private Image image;
 
     [SerializeField]
-    private Button button;
-
-    private Action<Sprite> onClickButton;
+    private Toggle toggle;
 
     public void SetImage(Sprite sprite)
     {
         image.sprite = sprite;
     }
 
-    public void SetPos(Vector3 pos)
+    public void ChangeToggle(bool isEnable = true)
     {
-        var rect = gameObject.transform as RectTransform;
-        rect.anchoredPosition = pos;
+        toggle.isOn = isEnable;
+        toggle.onValueChanged.Invoke(isEnable);
     }
+    
 
-    public void SetupButton(Action<Sprite> onClickButton)
+    public void SetupToggle(Action<bool, Sprite> onClickButton, ToggleGroup toggleGroup = null)
     {
-        this.onClickButton = onClickButton;
-        button.onClick.RemoveAllListeners();
-        button.onClick.AddListener(() => onClickButton?.Invoke(image.sprite));
-    }
+        toggle.group = toggleGroup;
 
-    public void SelfClickButton()
-    {
-        onClickButton?.Invoke(image.sprite);
+        toggle.onValueChanged.RemoveAllListeners();
+        toggle.onValueChanged.AddListener((isEnabled) => onClickButton?.Invoke(isEnabled, image.sprite));
     }
 }
