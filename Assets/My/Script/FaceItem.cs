@@ -12,9 +12,15 @@ public class FaceItem : MonoBehaviour
     [SerializeField]
     private Toggle toggle;
 
-    public void SetImage(Sprite sprite)
+    public void SetupImage(Sprite sprite)
     {
         image.sprite = sprite;
+    }
+
+    public void SetupImageStatus(Vector2 position, float scale)
+    {
+        setupImagePosition(position);
+        changeImageScale(scale);
     }
 
     public void ChangeToggle(bool isEnable = true)
@@ -30,5 +36,15 @@ public class FaceItem : MonoBehaviour
 
         toggle.onValueChanged.RemoveAllListeners();
         toggle.onValueChanged.AddListener((isEnabled) => onClickButton?.Invoke(isEnabled, image.sprite));
+    }
+
+    private void setupImagePosition(Vector2 pos)
+    {
+        image.rectTransform.anchoredPosition = pos;
+    }
+
+    private void changeImageScale(float scale)
+    {
+        image.rectTransform.localScale = Vector3.one * scale;
     }
 }

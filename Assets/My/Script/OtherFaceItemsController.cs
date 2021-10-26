@@ -50,7 +50,7 @@ public class OtherFaceItemsController : MonoBehaviour
         int resourceNum)
     {
         var sprite = Resources.Load<Sprite>($"{resourcePath}{resourceNum}");
-        faceItem.SetImage(sprite);
+        faceItem.SetupImage(sprite);
         spriteRenderer.sprite = sprite;
     }
 
