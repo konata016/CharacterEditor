@@ -12,6 +12,11 @@ public class FaceItemsControllerBase : MonoBehaviour
     private FaceItem defaultFaceItem;
 
     private FaceItem selectFaceItem;
+    
+    protected virtual void onFinishedEachFaceItemSetup(FaceItem faceItem)
+    {
+        
+    }
 
     public void Initialize(string resourcePath, Action<Sprite> onClickFaceItemButton)
     {
@@ -24,6 +29,7 @@ public class FaceItemsControllerBase : MonoBehaviour
         {
             setupFaceItemImage(faceItem, resourcePath, count);
             setupFaceItemButton(faceItem, onClickFaceItemButton);
+            onFinishedEachFaceItemSetup(faceItem);
             count++;
         }
     }
@@ -53,6 +59,6 @@ public class FaceItemsControllerBase : MonoBehaviour
     private void setupFaceItemImage(FaceItem faceItem, string resourcePath, int resourceNum)
     {
         var sprite = Resources.Load<Sprite>($"{resourcePath}{resourceNum}");
-        faceItem.SetImage(sprite);
+        faceItem.SetupImage(sprite);
     }
 }
